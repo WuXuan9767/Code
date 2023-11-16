@@ -3,7 +3,7 @@
 int main()
 {
     using namespace std;
-    double * p3 = new double[3];
+    double *p3 = new double[3];
     p3[0] = 0.2;
     p3[1] = 0.5;
     p3[2] = 0.8;
