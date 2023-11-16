@@ -7,6 +7,6 @@ int main()
     for (int a=0; a<6; a++)
     {
         scanf("%c",&ch[a]);
-   sdgsdgvdf
+    
 
 }
