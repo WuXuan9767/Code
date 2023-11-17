@@ -12,7 +12,7 @@ void print(int (*matrix)[3]) {
 int main() {
     int matrix[3][3];
     int Maindiagonal = 0, Subdiagonal = 0;
-    int transpose[3][3];
+    int Transposedmatrix[3][3];
 
     printf("请输入一个三阶矩阵：\n");
     for (int i = 0; i < 3; i++) {
@@ -24,7 +24,7 @@ int main() {
             if (i + j == 3 - 1) {
                 Subdiagonal += matrix[i][j];
             }
-            transpose[j][i] = matrix[i][j];
+            Transposedmatrix[j][i] = matrix[i][j];
         }
     }
 
@@ -35,7 +35,7 @@ int main() {
     printf("副对角线元素之和是：%d\n", Subdiagonal);
 
     printf("转置矩阵为：\n");
-    print(transpose);
+    print(Transposedmatrix);
 
     return 0;
 }

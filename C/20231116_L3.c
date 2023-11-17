@@ -27,7 +27,8 @@ void reverse(char* str)
 
 int main()
 {
-    char str[] = "Hello, Redrocker!";
+    char str[] = "Hello, Redrock!";
+    printf("原话为：%s\n", str);
     printf("最后一个单词的长度是：%d\n", last(str));
     printf("倒序输出字符串为：");
     reverse(str);

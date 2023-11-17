@@ -4,6 +4,7 @@ int main()
     char character;
     printf("请输入一个字母：\n");
     scanf("%c",&character);
+    
     if(character > 96 && character <123)
     {
         character-=32;

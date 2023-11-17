@@ -31,9 +31,11 @@ int main()
         }
          printf("\n");
     }
+
     printf("主对角线元素之和为：%d \n",Maindiagonal);
     printf("副对角线元素之和为：%d \n",Subdiagonal);
     printf("转置矩阵为：\n");
+    
     for (int i= 0;i<3;i++)
     {
         for (int j= 0;j<3;j++)
