@@ -6,13 +6,13 @@ int main()
    int Maindiagonal=0,Subdiagonal=0;
 
    printf("请输入一个三阶矩阵：\n");
-//    for (int i= 0;i<3;i++)
-//     {
-//         for (int j= 0;j<3;j++)
-//         {
-//             scanf("%d",&a[i][j]);
-//         }
-//     }
+   for (int i= 0;i<3;i++)
+    {
+        for (int j= 0;j<3;j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
     printf("你输入的矩阵为：\n");
     for (int i= 0;i<3;i++)
     {
