@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-
 void print(int *matrix) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             printf("%d ", *(matrix + i*3 + j));
         }
         printf("\n");
@@ -24,9 +25,11 @@ void print_diagonal(int *matrix) {
 }
 
 void print_transpose(int *matrix) {
-    printf("转置矩阵:\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    printf("转置矩阵为:\n");
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             printf("%d ", *(matrix + j*3 + i));
         }
         printf("\n");
@@ -37,13 +40,15 @@ int main() {
     int matrix[3][3];
 
     printf("请输入一个三阶矩阵:\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             scanf("%d", (*(matrix + i) + j));
         }
     }
 
-    printf("您输入的矩阵:\n");
+    printf("你输入的矩阵为:\n");
     print((int *)matrix);
     print_diagonal((int *)matrix);
     print_transpose((int *)matrix);
