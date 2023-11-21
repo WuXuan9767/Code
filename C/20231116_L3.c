@@ -11,7 +11,10 @@ int last(char* str)
         {
             break;
         }
-        count++;
+        if((str[i]>64 && str[i]<91)||(str[i]>96 && str[i]<123))
+        {
+            count++;
+        }
     }
     return count;
 }
