@@ -11,6 +11,7 @@ int last(char* str)
         {
             break;
         }
+//在这里新加了一个选择语句，确保只有字母计入输出结果
         if((str[i]>64 && str[i]<91)||(str[i]>96 && str[i]<123))
         {
             count++;

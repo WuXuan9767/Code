@@ -1,27 +1,35 @@
 #include <stdio.h>
 
-void print(int (*matrix)[3]) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+void print(int (*matrix)[3])
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             printf("%d ", matrix[i][j]);
         }
         printf("\n");
     }
 }
 
-int main() {
+int main()
+{
     int matrix[3][3]={1,2,3,4,5,6,7,8,9};
     int Maindiagonal = 0, Subdiagonal = 0;
     int Transposedmatrix[3][3];
 
     printf("请输入一个三阶矩阵：\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             scanf("%d", &matrix[i][j]);
-            if (i == j) {
+            if (i == j)
+            {
                 Maindiagonal += matrix[i][j];
             }
-            if (i + j == 3 - 1) {
+            if (i + j == 3 - 1)
+            {
                 Subdiagonal += matrix[i][j];
             }
             Transposedmatrix[j][i] = matrix[i][j];
