@@ -6,6 +6,8 @@ int od(int i);
 int main()
 {
     int n,sn;
+
+
     cin >> n;
     sn=od(n);
     cout << sn <<endl;
