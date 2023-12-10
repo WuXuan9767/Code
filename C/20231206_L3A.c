@@ -3,9 +3,9 @@
 int main(){
     struct book_information
     {   
-        name
+        name;
         author;
-        publication_date
+        int publication_date;
     };
     
 }
