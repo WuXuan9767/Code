@@ -1,3 +1,5 @@
+import support
+
 name = "kali"
 for i in name:
     print(i)
@@ -10,5 +12,5 @@ def max(a,b):
 d =4
 v =6
 print(max(d,v))
-import sp
-sp.asd()
+
+support.asd()

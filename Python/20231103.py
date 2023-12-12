@@ -21,3 +21,12 @@ sorted
 a =str(num_int)
 print(a)
 print(type(a))
+
+fruit = {"name":"apple","price":"20"}
+print(fruit)
+print(fruit["name"])
+
+
+person = {"name":"ubuntu","age":18}
+for i in person:
+    print(i,person[i])
