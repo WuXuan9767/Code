@@ -31,10 +31,32 @@ void initbuf() {
 }
 
 int func(char var[12]){
-    char buf[8];
+    char s[12];
+    char*buf=s;
+    memset(s, 0, 16);
     puts("---welcome to pop world!---");
     puts("---input your pop code---");
-    read(0,buf,1);
+    while(buf!=0){
+        read(0,buf,1);
+        if((buf-s)/16>0){
+            break;
+        }
+        buf++;
+    }
+    
+    char *var_30=s;
+    do{
+        if(var_30<"N"){
+            break;
+        }
+        var_30++;
+    }while(var_30<"_");
+
+
+    if((var_30-s)/16!=0){
+        puts("lose lose lose");
+    }
+
 }
 
 int main(){
@@ -48,5 +70,4 @@ int main(){
     }
     puts("xxxx{xxxx_xxxx_xxxx_xxxx}");
     puts("bye ~~~");
-    
 }
