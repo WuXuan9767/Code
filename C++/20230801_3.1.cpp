@@ -16,7 +16,7 @@ int main (void)
     cout << "long long is: "<< sizeof(long long) << "bytes."<< endl << endl;
 
     cout << "short is: "<< sizeof n << "bytes."<< endl;    //2字节不是2^16=65536吗？怎么32767也是2字节
-    cout << "int is: "<< sizeof n1 << "bytes."<< endl;
+    cout << "int is: "<< sizeof n1 << "bytes."<< endl;      //有无符号
     cout << "long is: "<< sizeof(n11) << "bytes."<< endl;
     cout << "long long is: "<< sizeof(n111) << "bytes."<< endl << endl;
 
