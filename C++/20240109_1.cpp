@@ -15,4 +15,5 @@ int main(){
     char b[20];
     strCopy(b,a);
     cout <<b<<endl<<a<<endl;
+    cout <<rand();
 }
