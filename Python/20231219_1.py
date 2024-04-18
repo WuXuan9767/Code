@@ -18,6 +18,7 @@ def register():
     user = cursor.fetchone()
     if user:
         return '用户名已存在'
+    
     else:
         cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
         conn.commit()

@@ -90,4 +90,3 @@ void output(Employee**ptrArray,int cnt){
         <<endl;
     }
 }
-   

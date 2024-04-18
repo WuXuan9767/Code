@@ -1,7 +1,7 @@
 #include<iostream>
-
 #include<cstring>
 using namespace std;
+
 struct Employee{
     long code;
     char name[20];
