@@ -1,22 +1,42 @@
 from pydantic import BaseModel
+from typing import List,Union
 
+
+class ReplyBase(BaseModel):
+    content: str
+    
+    
+
+class ReplyCreate(ReplyBase):
+    pass
+
+class ReplyChange(ReplyBase):
+    id: int
+
+class Reply(ReplyBase):
+    id: int
+    user_id: int
+    post_id: int
+    content: str
 
 class PostBase(BaseModel):
     content: str
+    
 
 class PostCreate(PostBase):
     pass
 
+class PostChange(PostBase):
+    id: int
+
 class Post(PostBase):
     id: int
-    user_id: int
     content: str
-
-    class Config:
-        from_attributes = True
+    user_id: int
+    replies: List[Reply] = []
 
 class UserBase(BaseModel):
-    email: str
+    username: str
 
 class UserCreate(UserBase):
     password: str
@@ -24,7 +44,10 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     is_active: bool
-    posts: list[Post] = []
+    posts: List[Post] = []
+    replies: List[Reply] = []
 
-    class Config:
-        from_attributes = True
+class Token(BaseModel):
+    access_token: Union[str, None] = None
+    token_type: Union[str, None] = None
+    username: Union[str, None] = None
