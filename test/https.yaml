@@ -1,0 +1,103 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: prefix-url-middleware
+  namespace: demo
+# spec:
+#   stripPrefix:
+#     prefixes:
+#       - /myblog
+spec:
+  replacePathRegex:
+    regex: "^/myblog/(.*)"
+    replacement: "/$1"
+      
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https-middleware
+  namespace: demo
+spec:
+  redirectScheme:
+    scheme: https
+    port: "31233" 
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fastapi-https
+  namespace: demo
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`fastapi.wu-xuan.top`) #&& PathPrefix(`/myblog`)
+    kind: Rule
+    services:
+    - name: fastapi-service
+      port: 8080
+    # middlewares:
+    # - name: prefix-url-middleware
+  tls:
+    secretName: myblog-tls
+
+      
+---   
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fastapi-http-plus
+  namespace: demo
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: Host(`fastapi.wu-xuan.top`) && PathPrefix(`/myblog`)
+    kind: Rule
+    services:
+    - name: fastapi-service
+      port: 8080
+    middlewares:
+     - name: prefix-url-middleware
+#     - name: redirect-https-middleware
+
+---   
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fastapi-http
+  namespace: demo
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: Host(`fastapi.wu-xuan.top`) && PathPrefix(`/openapi.json`)
+    kind: Rule
+    services:
+    - name: fastapi-service
+      port: 8080
+
+
+#kubectl create secret -n demo generic traefik-tls --from-file=tls.crt --from-file=tls.key
+
+# openssl genrsa -out ca.key 4096
+
+# openssl req -x509 -new -nodes -sha512 -days 36500 \
+#  -subj "/C=CN/ST=Chongqing/L=Chongqing/O=Redrock/OU=Personal/CN=fastapi.wu-xuan.top" \
+#  -key ca.key \
+#  -out ca.crt
+
+
+# openssl genrsa -out tls.key 4096
+
+# openssl req -sha512 -new \
+#  -subj "/C=CN/ST=Chongqing/L=Chongqing/O=Redrock/OU=Personal/CN=fastapi.wu-xuan.top" \
+#  -key tls.key \
+#  -out tls.csr
+
+# openssl x509 -req -sha512 -days 3650 \
+#     -CA ca.crt -CAkey ca.key -CAcreateserial \
+#     -in tls.csr \
+#     -out tls.crt

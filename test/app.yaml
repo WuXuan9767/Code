@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-test
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-mysql
+        image: mysql:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_DATABASE
+          value: fastapi
+        ports:
+        - containerPort: 3306
+
+      - name: my-fastapi
+        image: wuxuan9767/myblog:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: HOSTNAME
+          value: "localhost"
+        - name: PORT
+          value: "3306" 
+        - name: USERNAME
+          value: "root" 
+        - name: DATABASE
+          value: fastapi
+        - name: PASSWORD
+          value: password
